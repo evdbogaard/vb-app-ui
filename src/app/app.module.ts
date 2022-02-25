@@ -10,11 +10,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CharacterListComponent } from './character/character-list.component';
 import { MatCardModule } from '@angular/material/card';
+import { CharacterComponent } from './character/character.component';
+import { DotsPickerComponent } from './common/dots-picker/dots-picker.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    CharacterComponent,
+    DotsPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,9 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

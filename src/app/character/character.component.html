@@ -1,0 +1,71 @@
+<div class="sheet">
+    <div class="attributes">
+        <div class="group">
+            <span class="header">Physical</span>
+            <div *ngFor="let attribute of character.attributes.physical">
+                <span>{{ attribute.name }}</span>
+                <vb-dots-picker [value]="attribute.value"></vb-dots-picker>
+            </div>
+        </div>
+        
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div class="group">
+            <span class="header">Social</span>
+            <div *ngFor="let attribute of character.attributes.social">
+                <span>{{ attribute.name }}</span>
+                <vb-dots-picker [value]="attribute.value"></vb-dots-picker>
+            </div>
+        </div>
+
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div class="group">
+            <span class="header">Mental</span>
+            <div *ngFor="let attribute of character.attributes.mental">
+                <span>{{ attribute.name }}</span>
+                <vb-dots-picker [value]="attribute.value"></vb-dots-picker>
+            </div>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="attributes">
+        <div class="group">
+            <div *ngFor="let attribute of character.skills.physical">
+                <button mat-flat-button>{{ attribute.name }}</button>
+                <mat-chip-list *ngIf="!!attribute.specialization && attribute.specialization.length > 0"  title="specializations">
+                    <mat-chip *ngFor="let spec of attribute.specialization">{{ spec }}</mat-chip>
+                </mat-chip-list>
+                <vb-dots-picker [value]="attribute.value"></vb-dots-picker>
+            </div>
+        </div>
+        
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div class="group">
+            <div *ngFor="let attribute of character.skills.social">
+                <button mat-flat-button>{{ attribute.name }}</button>
+                <mat-chip-list *ngIf="!!attribute.specialization && attribute.specialization.length > 0"  title="specializations">
+                    <mat-chip *ngFor="let spec of attribute.specialization">{{ spec }}</mat-chip>
+                </mat-chip-list>
+                <vb-dots-picker [value]="attribute.value"></vb-dots-picker>
+            </div>
+        </div>
+
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div class="group">
+            <div *ngFor="let attribute of character.skills.mental">
+                <button mat-flat-button>{{ attribute.name }}</button>
+                <mat-chip-list *ngIf="!!attribute.specialization && attribute.specialization.length > 0" title="specializations">
+                    <mat-chip *ngFor="let spec of attribute.specialization">{{ spec }}</mat-chip>
+                </mat-chip-list>
+                <vb-dots-picker [value]="attribute.value"></vb-dots-picker>
+            </div>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+</div>
