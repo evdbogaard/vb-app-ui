@@ -46,7 +46,7 @@
 
         <div class="group">
             <div *ngFor="let attribute of character.skills.social">
-                <button mat-flat-button>{{ attribute.name }}</button>
+                <button (click)="openDicePoolPicker(attribute.name, attribute.value)" mat-flat-button>{{ attribute.name }}</button>
                 <mat-chip-list *ngIf="!!attribute.specialization && attribute.specialization.length > 0"  title="specializations">
                     <mat-chip *ngFor="let spec of attribute.specialization">{{ spec }}</mat-chip>
                 </mat-chip-list>

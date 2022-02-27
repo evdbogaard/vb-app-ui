@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Roll {{ data.skill }} + {{ selectedAttribute.name }}</h1>
+<mat-dialog-content>
+    <div>
+        <mat-label>Choose an option</mat-label>
+        <mat-select [(ngModel)]="selectedAttribute">
+            <mat-option *ngFor="let attribute of data.attributes.physical" [value]="attribute">{{ attribute.name }}</mat-option>
+            <mat-option *ngFor="let attribute of data.attributes.social" [value]="attribute">{{ attribute.name }}</mat-option>
+            <mat-option *ngFor="let attribute of data.attributes.mental" [value]="attribute">{{ attribute.name }}</mat-option>
+        </mat-select>
+    </div>
+
+    <div>
+        <mat-checkbox [(ngModel)]="useSpeciality" color="primary">Use speciality</mat-checkbox>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Misc modifier</mat-label>
+            <input matInput type="number" [(ngModel)]="miscModifier" placeholder="Misc modifier">
+        </mat-form-field>
+    </div>
+
+    <div>
+        
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button matDialogClose>CANCEL</button>
+    <button mat-flat-button (click)="roll()">ROLL WEBHOOK</button>
+    <button mat-flat-button (click)="roll()">ROLL ACCOUNT</button>
+</mat-dialog-actions>

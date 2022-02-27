@@ -14,25 +14,39 @@ import { CharacterComponent } from './character/character.component';
 import { DotsPickerComponent } from './common/dots-picker/dots-picker.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DicePoolPickerComponent } from './common/dice-pool-picker/dice-pool-picker.component';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterListComponent,
     CharacterComponent,
-    DotsPickerComponent
+    DotsPickerComponent,
+    DicePoolPickerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
 
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { filter } from 'rxjs';
+import { DicePoolPickerComponent } from '../common/dice-pool-picker/dice-pool-picker.component';
 
 @Component({
     selector: 'vb-character',
@@ -9,14 +13,15 @@ export class CharacterComponent implements OnInit {
 
     character: any;
 
-    constructor() {
+    constructor(private matDialog: MatDialog, private httpClient: HttpClient) {
         
-     }
+    }
 
     ngOnInit(): void {
         this.character = {
             id: 0,
             name: 'Johan "Mouse" de Vries',
+            shortName: "Mouse",
             imageUrl: 'https://cdn.discordapp.com/attachments/718259654764920842/945298809423036446/mouse_faceclaim.jpg',
             clan: 'Nosferatu',
             sect: 'Camarilla',
@@ -74,6 +79,23 @@ export class CharacterComponent implements OnInit {
                 ]
             }
         };
+    }
+
+    openDicePoolPicker(skill: string, skillValue: number) {
+        const dialogRef = this.matDialog.open(DicePoolPickerComponent, {
+            width: "500px",
+            data: { skill: skill, skillValue: skillValue, attributes: this.character.attributes }
+        });
+
+        dialogRef.afterClosed().pipe(filter(roll => roll !== "")).subscribe({
+            next: roll => {                
+                var content = {
+                    "content": `?roll ${roll.pool} 1 ${roll.difficulty} ${this.character.shortName} ${roll.reason}`
+                };
+                // TODO: Make this a secret somehow, don't care for now as it's to own discord server and channel
+                this.httpClient.post("https://discord.com/api/webhooks/947511585415508030/Dbb-0dEylJ6CToFNm-Lhw8j7v_ekF4Yi5Gm0gBUyTKPkrONYcPmhaKtDzdQGQz8NTj3n", content).subscribe();
+            }
+        });
     }
 
 }
